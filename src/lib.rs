@@ -25,31 +25,51 @@ fn prints_and_returns_10(a: i32) -> i32 {
     10
 }
 
+pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+pub fn add_two(a: i32) -> i32 {
+    internal_adder(a, 2)
+}
+
+fn internal_adder(a: i32, b: i32) -> i32 {
+    a + b
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    #[test]
-    fn it_works() -> Result<(), String> {
-        if 2 + 2 == 4 {
-            Ok(())
-        } else {
-            Err(String::from("two plus two does not equal four"))
-        }
-    }
+    // #[test]
+    // fn it_works() -> Result<(), String> {
+    //     if 2 + 2 == 4 {
+    //         Ok(())
+    //     } else {
+    //         Err(String::from("two plus two does not equal four"))
+    //     }
+    // }
+
+    // #[test]
+    // fn this_test_will_pass() {
+    //     let value = prints_and_returns_10(4);
+    //     assert_eq!(10, value);
+    // }
+
+    // // #[ignore]  忽略关键字
+    // #[test]
+    // fn this_test_will_fail() {
+    //     let value = prints_and_returns_10(8);
+    //     assert_eq!(5, value);
+    // }
+
+    use pretty_assertions::assert_eq; // 该包仅能用于测试
 
     #[test]
-    fn this_test_will_pass() {
-        let value = prints_and_returns_10(4);
-        assert_eq!(10, value);
+    fn test_add() {
+        assert_eq!(add(2, 3), 5);
     }
 
-    // #[ignore]  忽略关键字
-    #[test]
-    fn this_test_will_fail() {
-        let value = prints_and_returns_10(8);
-        assert_eq!(5, value);
-    }
 }
 
 /*
